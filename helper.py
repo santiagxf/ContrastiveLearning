@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import (confusion_matrix, precision_recall_curve, auc,
                              roc_curve, recall_score, classification_report, f1_score,
                              precision_recall_fscore_support)
+import pandas as pd
 
 def plot_loss_by_epoch(trainer):
     plt.figure(figsize=(14, 6))
@@ -32,7 +33,7 @@ def plot_reconstructuion_err_by_class(X_test, y_test, model, anomaly_class = 1, 
     if anomaly_class == 1:
         group_fn = list
     else:
-        group_n = reversed
+        group_fn = reversed
 
     for name, group in group_fn(list(groups)):
         ax.plot(group.index, group.reconstruction_error, marker='o', ms=3.5, linestyle='',
